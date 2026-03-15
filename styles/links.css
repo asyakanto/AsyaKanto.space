@@ -1,13 +1,14 @@
 /*=============Цвета===================*/
 :root {
-    --bg-dark: hsl(220, 35%, 8%);       /* фон сайта */
-    --card-bg: hsl(225, 30%, 14%);      /* фон карточки */
-    --card-border: hsl(230, 35%, 22%);  /* граница и тень */
-    --accent: hsl(13, 90%, 65%);        /* текст на кнопках */
-    --hover: hsl(17, 100%, 74%);        /* hover кнопок */
-    --white: hsl(27, 100%, 96%);        /* основной текст */
-    --button-bg: hsl(225, 30%, 20%);    /* фон кнопок и примечания */
-    --note-color: hsl(220, 20%, 45%);   /* цвет заметки */
+    --bg-dark: hsl(220, 35%, 8%);
+    --card-bg: hsl(225, 30%, 14%);
+    --card-border: hsl(230, 35%, 22%);
+    --accent: hsl(13, 90%, 65%);
+    --hover: hsl(17, 100%, 74%);
+    --white: hsl(27, 100%, 96%);
+    --button-bg: hsl(225, 30%, 20%);
+    --note-color: hsl(220, 20%, 45%);
+    --glow: rgba(255, 107, 53, 0.3);
 }
 
 /*=============Общее===================*/
@@ -47,33 +48,33 @@ img{
 }
 
 /*================Логотип==============*/
-
 .top{
-  width: 100%;
-  max-width: 500px;
   text-align: center;
+  width: 100%;
 }
 
 .top__logo{
   color: var(--white);
   text-decoration: none;
-  font-size: 25px;
+  font-size: clamp(20px, 5vw, 25px);
   font-weight: 700;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: 2px solid var(--card-border);
-  border-radius: 30px;
+  border-radius: 40px;
   background-color: var(--card-bg);
   transition: all 0.2s ease;
   letter-spacing: 1px;
   display: inline-block;
-  width: 350px;
+  width: min(350px, 90%);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .top__logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-2px);
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 8px 25px var(--glow);
 }
 
 
@@ -184,6 +185,9 @@ img{
   box-shadow: 0 0 15px var(--accent);
 }
 
+.card__copyBtn:active {
+    transform: scale(0.95);
+}
 
 
 /*==============Предупреждение=========*/

@@ -19,19 +19,63 @@
 
 /*===============Фон===================*/
 body{
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f2e 100%);
   font-family: "JetBrains Mono", monospace;
-  background-color: var(--bg-dark);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 25px;
   min-height: 100vh;
   color: var(--white);
-  font-size: 16px;
-  padding: 10% 0;
+  font-size: 18px;
 }
+
 img{
   width: 100%;
 }
+
+/*==============Выделение текста=========*/
+.top::selection {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.card ::selection {
+  background-color: var(--hover);
+  color: var(--bg-dark);
+}
+
+/*================Логотип==============*/
+
+.top{
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.top__logo{
+  color: var(--white);
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: 2px solid var(--card-border);
+  border-radius: 30px;
+  background-color: var(--card-bg);
+  transition: all 0.2s ease;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 350px;
+}
+
+.top__logo:hover {
+  transform: scale(1.05);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
+}
+
 
 /*================Карточка=============*/
 .card{
@@ -48,6 +92,7 @@ img{
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   gap: 15px;
 }
+
 .card:hover {
   transform: scale(1.02);
   box-shadow: 0 15px 30px rgba(0,0,0,0.6);
@@ -58,18 +103,17 @@ img{
   width: 150px;
   border-radius: 50%;
 }
+
 .card__title{
   font-weight: 700;
 }
+
 .card__description{
-  font-size: 0.9rem;
+  font-size: 14px;
   text-align: center;
 }
 
 /*===========Список ссылок=============*/
-.card__nav{
-  width: 100%;
-}
 .card__list{
   list-style: none;
   display: flex;
@@ -84,11 +128,11 @@ img{
   cursor: pointer;
   transform: scale(1.05);
 }
+
 .card__item {
   display: grid;
   grid-template-columns: 1fr 10fr 1fr;
   background-color: var(--button-bg);
-  padding: 0; /* убрать паддинг */
   font-weight: 600;
   border-radius: 10px;
   transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
@@ -97,41 +141,49 @@ img{
 
 .card__link {
   text-decoration: none;
-  grid-column: 1 / -1; /* ссылка на всю ширину */
+  grid-column: 1 / -1;
   grid-row: 1;
   color: var(--accent);
   text-align: center;
-  padding: 12px; /* паддинг перенести на ссылку */
+  padding: 12px;
   z-index: 1;
 }
 
-.card__copyBtn {
-  grid-column: 3;
-  grid-row: 1;
-  width: 40px;
-  border: none;
-  background-color: var(--card-bg);
-  color: var(--accent);
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-align: center;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: "JetBrains Mono", monospace;
-  opacity: 0.8;
-  z-index: 2; /* кнопка поверх ссылки */
-  margin-right: 8px; /* небольшой отступ */
-}
-
-/* чтобы фон не перекрывал кнопку */
 .card__link:hover {
   background-color: transparent;
 }
 
 .card__item:hover .card__link {
-  color: var(--white); /* цвет текста при ховере */
+  color: var(--white);
 }
+
+.card__copyBtn {
+  grid-column: 3;
+  grid-row: 1;
+  width: 44px;
+  height: 35px;
+  border: none;
+  background-color: var(--card-bg);
+  color: var(--accent);
+  font-size: 21px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.8;
+  z-index: 2;
+  margin-right: 8px;
+}
+
+.card__copyBtn:hover {
+  opacity: 1;
+  background-color: var(--accent);
+  color: var(--card-bg);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--accent);
+}
+
 
 
 /*==============Предупреждение=========*/
@@ -140,7 +192,6 @@ img{
     font-size: 0.9em;
     text-align: center;
 }
-
 
 /*==============ПК-версия==============*/
 
@@ -152,13 +203,4 @@ img{
     .card {
         padding: 30px 40px;
     }
-}
-
-.card__link:focus-visible,
-.card__copyBtn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-body {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f2e 100%);
 }
